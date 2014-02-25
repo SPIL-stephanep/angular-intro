@@ -4,6 +4,11 @@ var app = angular.module('intro', ['ui.router']);
 // Controllers
 app.controller('HomeCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
     $scope.pageTitle = 'This is the home page';
+    $scope.counter = 0;
+
+    $scope.multiply = function(a, b) {
+        console.log(a * b);
+    }
 }]);
 
 // Setup the view routes
