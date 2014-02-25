@@ -16,6 +16,10 @@ app.controller('FactoryCtrl', ['$scope', 'Portals', function($scope, Portals) {
     $scope.portals = Portals;
 }]);
 
+app.controller('DirectivesCtrl', ['$scope', function($scope) {
+    $scope.spanClass = '';
+}]);
+
 // Factories
 app.factory('Portals', function() {
     return [
@@ -26,6 +30,24 @@ app.factory('Portals', function() {
         {name: 'jeux.fr', country: 'France'}
     ];
 });
+
+// Directives
+app.directive('overthespan', function() {
+    return function(scope, element, attrs) {
+        element.bind('mouseenter', function() {
+            scope.$apply(function() {
+                scope.spanClass = attrs.overthespan;
+            });
+        });
+
+        element.bind('mouseout', function() {
+            scope.$apply(function() {
+                scope.spanClass = '';
+            });
+        });
+    }
+});
+
 
 // Setup the view routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -44,11 +66,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: "/templates/factories.html",
             controller: 'FactoryCtrl'
         })
-        // .state('Home', {
-        //     url: "/",
-        //     templateUrl: "/templates/home.html",
-        //     controller: 'HomeCtrl'
-        // })
+        .state('Directives', {
+            url: "/directives",
+            templateUrl: "/templates/directives.html",
+            controller: 'DirectivesCtrl'
+        })
         // .state('Home', {
         //     url: "/",
         //     templateUrl: "/templates/home.html",
