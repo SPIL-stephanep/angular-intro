@@ -20,6 +20,10 @@ app.controller('DirectivesCtrl', ['$scope', function($scope) {
     $scope.spanClass = '';
 }]);
 
+app.controller('FiltersCtrl', ['$scope', function($scope) {
+    $scope.message = '';
+}]);
+
 // Factories
 app.factory('Portals', function() {
     return [
@@ -48,6 +52,12 @@ app.directive('overthespan', function() {
     }
 });
 
+// Filters
+app.filter('reversed', function() {
+    return function(text) {
+        return text.split("").reverse().join("");
+    }
+});
 
 // Setup the view routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -71,12 +81,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: "/templates/directives.html",
             controller: 'DirectivesCtrl'
         })
-        // .state('Home', {
-        //     url: "/",
-        //     templateUrl: "/templates/home.html",
-        //     controller: 'HomeCtrl'
-        // })
-        ;
+        .state('Filters', {
+            url: "/filters",
+            templateUrl: "/templates/filters.html",
+            controller: 'FiltersCtrl'
+        });
 
     $locationProvider.hashPrefix('!');
 });
