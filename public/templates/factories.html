@@ -1,0 +1,16 @@
+<input type="text" class="form-control" ng-model="searchText">
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="portal in portals | filter: searchText">
+            <td>{{portal.name}}</td>
+            <td>{{portal.country}}</td>
+        </tr>
+    </tbody>
+</table>
