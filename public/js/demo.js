@@ -1,6 +1,11 @@
 // Initialize your application with the dependencies
 var app = angular.module('intro', ['ui.router']);
 
+// Controllers
+app.controller('HomeCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $scope.pageTitle = 'This is the home page';
+}]);
+
 // Setup the view routes
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     // Re-route to home page if needed
@@ -11,7 +16,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('Home', {
             url: "/",
             templateUrl: "/templates/home.html",
-            controller: ''
+            controller: 'HomeCtrl'
         });
 
     $locationProvider.hashPrefix('!');
