@@ -1,0 +1,21 @@
+{
+  "name": "angular-intro",
+  "version": "0.0.0",
+  "description": "angular-intro =============",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SPIL-stephanep/angular-intro.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SPIL-stephanep/angular-intro/issues"
+  },
+  "dependencies": {
+    "express": "~3.4.8"
+  }
+}
