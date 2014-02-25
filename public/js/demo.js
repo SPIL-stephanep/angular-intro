@@ -7,9 +7,13 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', function($scope, $rootScope)
     $scope.counter = 0;
     $scope.myInput = 'Two way binding';
 
+    $rootScope.title ='title for home page';
+
     $scope.multiply = function(a, b) {
         console.log(a * b);
     }
+
+    $scope.today = new Date();
 }]);
 
 app.controller('FactoryCtrl', ['$scope', 'Portals', function($scope, Portals) {
@@ -37,18 +41,41 @@ app.factory('Portals', function() {
 
 // Directives
 app.directive('overthespan', function() {
-    return function(scope, element, attrs) {
-        element.bind('mouseenter', function() {
-            scope.$apply(function() {
-                scope.spanClass = attrs.overthespan;
-            });
-        });
+    // return function(scope, element, attrs) {
+    //     element.bind('mouseenter', function() {
+    //         scope.$apply(function() {
+    //             scope.spanClass = attrs.overthespan;
+    //         });
+    //     });
 
-        element.bind('mouseout', function() {
-            scope.$apply(function() {
-                scope.spanClass = '';
+    //     element.bind('mouseout', function() {
+    //         scope.$apply(function() {
+    //             scope.spanClass = '';
+    //         });
+    //     });
+    // }
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('mouseenter', function() {
+                scope.$apply(function() {
+                    scope.spanClass = attrs.overthespan;
+                });
             });
-        });
+
+            element.bind('mouseout', function() {
+                scope.$apply(function() {
+                    scope.spanClass = '';
+                });
+            });
+        }
+    };
+});
+
+app.directive('blog', function() {
+    return {
+        restrict: 'E',
+        template: '<h2>i am a blog</h2>'
     }
 });
 

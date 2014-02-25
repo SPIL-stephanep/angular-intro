@@ -12,3 +12,6 @@
 <input type="checkbox" ng-model="showmsg">
 <label>show message ?</label>
 <p ng-if="showmsg">I am only shown if you tell me to!</p>
+<p class="alert" ng-class="{'alert-success': showmsg}">I am an alert</p>
+<br><br>
+<p>{{today.toLocaleString()}}</p>
