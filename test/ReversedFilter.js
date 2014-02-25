@@ -1,4 +1,4 @@
-describe('reversed filter', function() {
+describe('Reversed filter', function() {
     var filter;
 
     beforeEach(module('intro'));
